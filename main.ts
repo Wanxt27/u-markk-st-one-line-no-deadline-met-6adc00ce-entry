@@ -33,6 +33,10 @@ function guard(text: string): void {
   if (!/final_FINAL_v2_reallyfinal\.docx/.test(text)) {
     throw new Error("entry must name the wrong copy");
   }
+  // The punchline must survive: the real file is still blank.
+  if (!/the real one is still blank\.$/.test(text)) {
+    throw new Error('entry must end with the "still blank" kicker');
+  }
   // Tight writing: every word earns its place, no double spaces.
   if (/  /.test(text)) {
     throw new Error("entry must not contain double spaces");
