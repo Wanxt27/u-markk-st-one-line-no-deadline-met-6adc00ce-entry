@@ -37,6 +37,10 @@ function guard(text: string): void {
   if (!/the real one is still blank\.$/.test(text)) {
     throw new Error('entry must end with the "still blank" kicker');
   }
+  // It must open with the three days of polishing, not a stray observation.
+  if (!/^I spent three days polishing the file/.test(text)) {
+    throw new Error("entry must open with the three-days setup");
+  }
   // Tight writing: every word earns its place, no double spaces.
   if (/  /.test(text)) {
     throw new Error("entry must not contain double spaces");
